@@ -37,7 +37,7 @@ export const useDataLoader = (): DataLoaderResult => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadCSVFile = async (url: string): Promise<any[]> => {
+  const loadCSVFile = async (url: string): Promise<unknown[]> => {
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -63,7 +63,7 @@ export const useDataLoader = (): DataLoaderResult => {
               resolve(results.data);
             }
           },
-          error: (error: any) => reject(error),
+          error: (error: Error) => reject(error),
         });
       });
     } catch (error) {

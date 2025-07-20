@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getAvailableSegments(data: any[]) {
+export function getAvailableSegments(data: Record<string, unknown>[]) {
   if (!data || data.length === 0) {
     return [];
   }
@@ -14,7 +14,7 @@ export function getAvailableSegments(data: any[]) {
   return segments;
 }
 
-export function getAvailableYears(data: any[]) {
+export function getAvailableYears(data: Record<string, unknown>[]) {
   if (!data || data.length === 0) {
     return [];
   }
@@ -30,7 +30,7 @@ export function getSegmentDataForYear(data: WorldData[], year: number) {
   }));
 }
 
-export function formatWorldRevenueData(data: any[]) {
+export function formatWorldRevenueData(data: Record<string, unknown>[]) {
   const segments = getAvailableSegments(data);
   const formattedData = [];
   for (const segment of segments) {

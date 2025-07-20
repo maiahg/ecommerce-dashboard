@@ -31,6 +31,15 @@ import {
   getSegmentDataForYear,
 } from "@/lib/utils";
 
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    value: number;
+    dataKey: string;
+  }>;
+  label?: string;
+}
+
 const segments = [
   "beverages",
   "media",
@@ -77,7 +86,7 @@ export function WorldRevenueChart() {
     );
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-card border border-border rounded-lg p-3 shadow-lg">

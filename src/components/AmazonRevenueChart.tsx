@@ -28,6 +28,15 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { filterAmazonDataByYear } from "@/lib/utils";
 import { useDataLoader } from "@/hooks/useDataLoader";
 
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    value: number;
+    dataKey: string;
+  }>;
+  label?: string;
+}
+
 type TimePeriod = "five_years" | "ten_years" | "all";
 
 export function AmazonRevenueChart() {
@@ -58,7 +67,7 @@ export function AmazonRevenueChart() {
 
   const data = getFilteredData();
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
