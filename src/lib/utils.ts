@@ -6,15 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getAvailableSegments(data: Record<string, unknown>[]) {
-  if (!data || data.length === 0) {
-    return [];
-  }
-  const segments = Object.keys(data[0]).filter(key => key !== 'Year');
-  return segments;
-}
-
-export function getAvailableYears(data: Record<string, unknown>[]) {
+export function getAvailableYears(data: WorldData[]) {
   if (!data || data.length === 0) {
     return [];
   }
@@ -28,19 +20,6 @@ export function getSegmentDataForYear(data: WorldData[], year: number) {
     segment: item.segment,
     revenue: item[yearKey] as number
   }));
-}
-
-export function formatWorldRevenueData(data: Record<string, unknown>[]) {
-  const segments = getAvailableSegments(data);
-  const formattedData = [];
-  for (const segment of segments) {
-    const segmentData = data.map(item => ({
-      segment: segment,
-      revenue: item[segment],
-    }));
-    formattedData.push(...segmentData);
-  }
-  return formattedData;
 }
 
 export function filterAmazonDataByYear(data: AmazonData[], startYear: number, endYear: number) {
